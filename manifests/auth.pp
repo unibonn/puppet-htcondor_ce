@@ -12,7 +12,11 @@ class htcondor_ce::auth {
 
   if $gsi_backend == 'argus' {
     class { '::htcondor_ce::auth::argus': }
-  } else {
+  }
+  elsif $gsi_backend == 'lcmaps' {
+    class { '::htcondor_ce::auth::lcmaps': }
+  }
+  else {
     fail("This module currently doesn't support backends other than ARGUS.")
   }
 }
